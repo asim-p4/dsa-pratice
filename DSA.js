@@ -3052,3 +3052,43 @@ function isSafe(ary, row, col, dig) {
 
 //   return { pred, succ };
 // }
+
+//time(n'vertices'+e'neighbours in adjacency list') space(n), BFS Traversal in Graphs
+// function BFS(list) {
+//   // queue is used to process nodes level by level (FIFO)
+//   const queue = [];
+
+//   // state array keeps track of visited nodes
+//   // index = node number, value = true/false
+//   const state = Array.from({ length: 5 }, () => false);
+
+//   // start BFS from node 0
+//   queue.push(0);
+
+//   // mark starting node as visited
+//   state[0] = true;
+
+//   // continue until there are no nodes left to visit
+//   while (queue.length > 0) {
+//     // remove the first node from the queue
+//     // this is the current node being processed
+//     const u = queue.shift();
+
+//     // process the current node (print it here)
+//     console.log(u);
+
+//     // iterate over all neighbors of the current node
+//     for (const el of list[u]) {
+//       // if the neighbor has not been visited yet
+//       if (!state[el]) {
+//         // mark the neighbor as visited
+//         // this prevents revisiting the same node
+//         state[el] = true;
+
+//         // add the neighbor to the queue
+//         // it will be processed in future iterations
+//         queue.push(el);
+//       }
+//     }
+//   }
+// }
