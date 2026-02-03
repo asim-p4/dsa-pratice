@@ -3092,3 +3092,31 @@ function isSafe(ary, row, col, dig) {
 //     }
 //   }
 // }
+
+//time(n'vertices'+e'neighbours in adjacency list') space(n), DFS Traversal in Graphs
+// function DFS(list, vertex, state) {
+//   // mark the current node as visited
+//   // this prevents infinite loops in cyclic graphs
+//   state[vertex] = true;
+
+//   // process the current node (print it here)
+//   console.log(vertex);
+
+//   // iterate over all neighbors of the current node
+//   for (const el of list[vertex]) {
+
+//     // if the neighbor has not been visited yet
+//     if (!state[el]) {
+
+//       // recursively visit the neighbor
+//       // DFS goes as deep as possible before backtracking
+//       DFS(list, el, state);
+//     }
+//   }
+// }
+// // create an array to track visited nodes
+// // index  = node number
+// // value  = true if node is visited, false otherwise
+// const state = Array.from({ length: 5 }, () => false);
+// // start DFS from node 0
+// DFS(graph.adjList, 0, state);
