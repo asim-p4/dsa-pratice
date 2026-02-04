@@ -3123,29 +3123,29 @@ function isSafe(ary, row, col, dig) {
 
 
 //time(n'vertices'+e'neighbours in adjacency list') space(n), Detect a Cycle in Undirected Graph using DFS
-function detectCycle(list, u, par, state) {
-  // mark current node as visited
-  state[u] = true;
+// function detectCycleDFS(list, u, par, state) {
+//   // mark current node as visited
+//   state[u] = true;
 
-  // visit all adjacent vertices of current node
-  for (const el of list[u]) {
+//   // visit all adjacent vertices of current node
+//   for (const el of list[u]) {
 
-    // if adjacent node is not visited,
-    // recursively check for cycle from that node
-    if (!state[el]) {
-      if (detectCycle(list, el, u, state)) {
-        return true; // cycle found in deeper call
-      }
-    }
+//     // if adjacent node is not visited,
+//     // recursively check for cycle from that node
+//     if (!state[el]) {
+//       if (detectCycle(list, el, u, state)) {
+//         return true; // cycle found in deeper call
+//       }
+//     }
 
-    // if adjacent node is already visited
-    // AND it is not the parent of current node,
-    // then we found a back-edge → cycle exists
-    else if (el != par) {
-      return true;
-    }
-  }
+//     // if adjacent node is already visited
+//     // AND it is not the parent of current node,
+//     // then we found a back-edge → cycle exists
+//     else if (el != par) {
+//       return true;
+//     }
+//   }
 
-  // no cycle found from this path
-  return false;
-}
+//   // no cycle found from this path
+//   return false;
+// }
