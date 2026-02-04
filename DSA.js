@@ -3149,3 +3149,46 @@ function isSafe(ary, row, col, dig) {
 //   // no cycle found from this path
 //   return false;
 // }
+
+//time(n'vertices'+e'neighbours in adjacency list') space(n), Detect a Cycle in Undirected Graph using BFS
+// function detectCycleBFS(start, state) {
+//   const queue = [];
+
+//   // push the starting node into the queue
+//   // along with its parent (-1 means no parent)
+//   queue.push([start, -1]);
+
+//   // mark the starting node as visited
+//   state[start] = true;
+
+//   // continue BFS while there are nodes to process
+//   while (queue.length > 0) {
+
+//     // take out the front element of the queue
+//     // u   → current node
+//     // par → parent of current node
+//     const [u, par] = queue.shift();
+
+//     // traverse all adjacent nodes of current node
+//     for (const el of graph.adjList[u]) {
+
+//       // if adjacent node is not visited,
+//       // mark it visited and add it to the queue
+//       // with current node as its parent
+//       if (!state[el]) {
+//         state[el] = true;
+//         queue.push([el, u]);
+//       }
+
+//       // if adjacent node is already visited
+//       // and it is NOT the parent of current node,
+//       // then a cycle exists in the graph
+//       else if (el != par) {
+//         return true;
+//       }
+//     }
+//   }
+
+//   // if BFS completes without finding a cycle
+//   return false;
+// }
