@@ -3250,3 +3250,89 @@ function isSafe(ary, row, col, dig) {
 //   // return total number of islands found
 //   return islands;
 // }
+
+
+//time(n*m) space(n*m), L.C=994, Rotting Oranges | Multi-source BFS
+// const grid = [
+//   [2, 1, 0, 0, 0, 1],
+//   [1, 1, 0, 0, 0, 1],
+//   [0, 1, 1, 0, 0, 1],
+//   [0, 0, 1, 1, 1, 1],
+// ];
+// function timeToRotten() {
+//   let time = 0;
+
+//   // number of rows and columns in the grid
+//   const n = grid.length;
+//   const m = grid[0].length;
+
+//   // queue for BFS
+//   // each element stores row index, column index, and time taken
+//   const queue = [];
+
+//   // visited matrix to track already rotten/processed oranges
+//   const vis = Array.from({ length: n }, () => Array(m).fill(false));
+
+//   // initialize BFS with all initially rotten oranges
+//   for (let i = 0; i < grid.length; i++) {
+//     for (let j = 0; j < grid[0].length; j++) {
+
+//       // if orange is already rotten
+//       if (grid[i][j] === 2) {
+//         // push its position with time = 0
+//         queue.push({ i, j, t: 0 });
+
+//         // mark it as visited
+//         vis[i][j] = true;
+//       }
+//     }
+//   }
+
+//   // perform BFS to rot adjacent fresh oranges
+//   while (queue.length > 0) {
+//     // take the front element from queue
+//     const { i, j, t } = queue.shift();
+
+//     // keep track of the maximum time taken so far
+//     time = Math.max(time, t);
+
+//     // check the upper cell
+//     if (i - 1 >= 0 && !vis[i - 1][j] && grid[i - 1][j] === 1) {
+//       queue.push({ i: i - 1, j, t: t + 1 });
+//       vis[i - 1][j] = true;
+//     }
+
+//     // check the lower cell
+//     if (i + 1 < n && !vis[i + 1][j] && grid[i + 1][j] === 1) {
+//       queue.push({ i: i + 1, j, t: t + 1 });
+//       vis[i + 1][j] = true;
+//     }
+
+//     // check the left cell
+//     if (j - 1 >= 0 && !vis[i][j - 1] && grid[i][j - 1] === 1) {
+//       queue.push({ i, j: j - 1, t: t + 1 });
+//       vis[i][j - 1] = true;
+//     }
+
+//     // check the right cell
+//     if (j + 1 < m && !vis[i][j + 1] && grid[i][j + 1] === 1) {
+//       queue.push({ i, j: j + 1, t: t + 1 });
+//       vis[i][j + 1] = true;
+//     }
+//   }
+
+//   // after BFS, check if any fresh orange is left unrotted
+//   for (let i = 0; i < grid.length; i++) {
+//     for (let j = 0; j < grid[0].length; j++) {
+
+//       // if a fresh orange was never visited,
+//       // it means it cannot be rotted
+//       if (grid[i][j] === 1 && !vis[i][j]) {
+//         return -1;
+//       }
+//     }
+//   }
+
+//   // return total time taken to rot all oranges
+//   return time;
+// }
