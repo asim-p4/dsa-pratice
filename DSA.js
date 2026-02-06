@@ -3192,3 +3192,61 @@ function isSafe(ary, row, col, dig) {
 //   // if BFS completes without finding a cycle
 //   return false;
 // }
+
+
+//time(n*m) space(n*m), L.C=200, Find Number of Islands
+// const grid = [
+//   [1, 1, 0, 0, 0, 1],
+//   [1, 1, 0, 0, 0, 0],
+//   [0, 0, 1, 0, 0, 0],
+//   [0, 0, 0, 1, 1, 0],
+// ];
+// // DFS function to explore all connected land cells (1's)
+// function DFS(i, j, vis, grid, n, m) {
+//   // base conditions:
+//   // 1. out of grid boundaries
+//   // 2. already visited cell
+//   // 3. cell is not land (value !== 1)
+//   if (i < 0 || j < 0 || i >= n || j >= m || vis[i][j] || grid[i][j] !== 1)
+//     return;
+
+//   // mark current cell as visited
+//   vis[i][j] = true;
+
+//   // recursively visit all 4 adjacent directions
+//   DFS(i, j + 1, vis, grid, n, m); // right
+//   DFS(i, j - 1, vis, grid, n, m); // left
+//   DFS(i + 1, j, vis, grid, n, m); // down
+//   DFS(i - 1, j, vis, grid, n, m); // up
+// }
+// // function to count number of islands in the grid
+// function numOfIslands() {
+//   let islands = 0;
+
+//   // number of rows and columns
+//   const n = grid.length;
+//   const m = grid[0].length;
+
+//   // visited matrix to track already explored cells
+//   const vis = Array.from({ length: n }, () => Array(m).fill(false));
+
+//   // traverse every cell in the grid
+//   for (let i = 0; i < grid.length; i++) {
+//     for (let j = 0; j < grid[0].length; j++) {
+
+//       // if current cell is land and not visited,
+//       // it means we found a new island
+//       if (!vis[i][j] && grid[i][j] === 1) {
+
+//         // explore the entire island using DFS
+//         DFS(i, j, vis, grid, n, m);
+
+//         // increment island count
+//         islands++;
+//       }
+//     }
+//   }
+
+//   // return total number of islands found
+//   return islands;
+// }
