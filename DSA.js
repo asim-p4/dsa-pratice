@@ -3336,3 +3336,39 @@ function isSafe(ary, row, col, dig) {
 //   // return total time taken to rot all oranges
 //   return time;
 // }
+
+
+function detectCycleDirectedGraphDFS(u, vis, recur, graph) {
+  // mark current node as visited
+  vis[u] = true;
+
+  // mark current node as part of the current recursion stack
+  recur[u] = true;
+
+  // traverse all adjacent vertices of current node
+  for (const el of graph[u]) {
+
+    // if adjacent node is not visited,
+    // perform DFS from that node
+    if (!vis[el]) {
+      if (detectCycleDFS(el, vis, recur, graph)) {
+        // if a cycle is found in deeper recursion
+        return true;
+      }
+    }
+
+    // if adjacent node is already visited
+    // and it is present in the current recursion stack,
+    // then a cycle exists in the directed graph
+    else if (recur[el]) {
+      return true;
+    }
+  }
+
+  // remove current node from recursion stack
+  // before returning to previous call
+  recur[u] = false;
+
+  // no cycle detected from this path
+  return false;
+}
