@@ -3372,3 +3372,26 @@ function isSafe(ary, row, col, dig) {
 //   // no cycle detected from this path
 //   return false;
 // }
+// class Graph {
+//   constructor() {
+//     this.adjList = {};
+//   }
+
+//   addVertex(vertex) {
+//     if (!this.adjList[vertex]) this.adjList[vertex] = [];
+//   }
+
+//   connectEdge(v1, v2) {
+//     if (!this.adjList[v1]) this.addVertex(v1);
+//     if (!this.adjList[v2]) this.addVertex(v2);
+
+//     this.adjList[v1].push(v2);
+//   }
+// }
+// const graph = new Graph();
+// graph.connectEdge(0, 1);
+// graph.connectEdge(1, 2);
+// graph.connectEdge(1, 3);
+// graph.connectEdge(3, 2);
+// graph.connectEdge(2, 4);
+// graph.connectEdge(2, 1);
