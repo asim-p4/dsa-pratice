@@ -3396,3 +3396,73 @@ function isSafe(ary, row, col, dig) {
 // graph.connectEdge(3, 2);
 // graph.connectEdge(2, 4);
 // graph.connectEdge(2, 1);
+
+
+//time(n'vertices'+e'neighbours in adjacency list') space(n), Topological Sorting in Graph | using DFS
+// graph must be directional and acyclic
+// class Graph {
+//   constructor() {
+//     this.adjList = {};
+//   }
+
+//   addVertex(vertex) {
+//     if (!this.adjList[vertex]) this.adjList[vertex] = [];
+//   }
+
+//   connectEdge(v1, v2) {
+//     if (!this.adjList[v1]) this.addVertex(v1);
+//     if (!this.adjList[v2]) this.addVertex(v2);
+
+//     this.adjList[v1].push(v2);
+//     // this.adjList[v2].push(v1);
+//   }
+// }
+// function DFS(u, graph, vis, stack) {
+//   // mark current vertex as visited
+//   vis[u] = true;
+
+//   // visit all adjacent vertices of u
+//   for (const v of graph[u]) {
+//     // if adjacent vertex is not visited,
+//     // recursively perform DFS on it
+//     if (!vis[v]) {
+//       DFS(v, graph, vis, stack);
+//     }
+//   }
+
+//   // after visiting all neighbors of u,
+//   // push u to stack
+//   // (this ensures u comes after its dependencies)
+//   stack.push(u);
+// }
+// function topologicalSorting(graph) {
+//   const vertices = 6;
+
+//   // visited array to track visited vertices
+//   const vis = Array(vertices).fill(false);
+
+//   // stack to store topological order
+//   const stack = [];
+
+//   // perform DFS for each vertex
+//   // (needed to handle disconnected components)
+//   for (let i = 0; i < vertices; i++) {
+//     if (!vis[i]) {
+//       DFS(i, graph, vis, stack);
+//     }
+//   }
+
+//   // pop elements from stack to get
+//   // topological ordering
+//   while (stack.length > 0) {
+//     console.log(stack.pop());
+//   }
+// }
+// const graph = new Graph();
+// graph.connectEdge(5, 0);
+// graph.connectEdge(5, 2);
+// graph.connectEdge(2, 3);
+// graph.connectEdge(3, 1);
+// graph.connectEdge(4, 0);
+// graph.connectEdge(4, 1);
+// topologicalSorting(graph.adjList);
