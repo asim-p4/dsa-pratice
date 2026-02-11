@@ -3121,7 +3121,6 @@ function isSafe(ary, row, col, dig) {
 // // start DFS from node 0
 // DFS(graph.adjList, 0, state);
 
-
 //time(n'vertices'+e'neighbours in adjacency list') space(n), Detect a Cycle in Undirected Graph using DFS
 // function detectCycleDFS(list, u, par, state) {
 //   // mark current node as visited
@@ -3193,7 +3192,6 @@ function isSafe(ary, row, col, dig) {
 //   return false;
 // }
 
-
 //time(n*m) space(n*m), L.C=200, Find Number of Islands
 // const grid = [
 //   [1, 1, 0, 0, 0, 1],
@@ -3250,7 +3248,6 @@ function isSafe(ary, row, col, dig) {
 //   // return total number of islands found
 //   return islands;
 // }
-
 
 //time(n*m) space(n*m), L.C=994, Rotting Oranges | Multi-source BFS
 // const grid = [
@@ -3337,7 +3334,6 @@ function isSafe(ary, row, col, dig) {
 //   return time;
 // }
 
-
 //time(n'vertices'+e'neighbours in adjacency list') space(n), Detect a Cycle in Directed Graph using DFS
 // function detectCycleDirectedGraphDFS(u, vis, recur, graph) {
 //   // mark current node as visited
@@ -3396,7 +3392,6 @@ function isSafe(ary, row, col, dig) {
 // graph.connectEdge(3, 2);
 // graph.connectEdge(2, 4);
 // graph.connectEdge(2, 1);
-
 
 //time(n'vertices'+e'neighbours in adjacency list') space(n), Topological Sorting in Graph | using DFS
 // graph must be directional and acyclic
@@ -3466,3 +3461,73 @@ function isSafe(ary, row, col, dig) {
 // graph.connectEdge(4, 0);
 // graph.connectEdge(4, 1);
 // topologicalSorting(graph.adjList);
+
+//time(n'vertices'+e'neighbours in adjacency list') space(n), L.C = 207, Course Schedule Problem
+// function DFS(src, vis, recStack, preRequistes) {
+//   // mark current course as visited
+//   vis[src] = true;
+
+//   // mark current course as part of current recursion path
+//   // this helps detect back-edges (cycles)
+//   recStack[src] = true;
+
+//   // traverse all prerequisite pairs
+//   for (let i = 0; i < vis.length; i++) {
+//     // v depends on u  (u → v)
+//     const v = preRequistes[i][0];
+//     const u = preRequistes[i][1];
+
+//     // check only edges that start from current node
+//     if (u === src) {
+//       // if next course is not visited, explore it
+//       if (!vis[v]) {
+//         if (DFS(v, vis, recStack, preRequistes)) {
+//           return true; // cycle found deeper
+//         }
+//       }
+
+//       // if already visited AND still in recursion stack,
+//       // it means we found a back-edge → cycle
+//       else if (recStack[v]) {
+//         return true;
+//       }
+//     }
+//   }
+
+//   // remove current node from recursion stack
+//   // because its DFS path is complete
+//   recStack[src] = false;
+
+//   // no cycle found from this node
+//   return false;
+// }
+// function canFinish() {
+//   const preRequistes = [
+//     [1, 0],
+//     [2, 0],
+//     [3, 1],
+//     [3, 2],
+//   ];
+
+//   const numCourses = 4;
+
+//   // visited array to track processed courses
+//   const vis = Array(numCourses).fill(false);
+
+//   // recursion stack array to detect cycles
+//   const recStack = [];
+
+//   // check each course
+//   for (let i = 0; i < numCourses; i++) {
+
+//     // if course not visited, run DFS
+//     if (!vis[i]) {
+//       if (DFS(i, vis, recStack, preRequistes)) {
+//         return false; // cycle exists → cannot finish
+//       }
+//     }
+
+//     // ❌ This return is wrongly placed (explained below)
+//     return true;
+//   }
+// }
