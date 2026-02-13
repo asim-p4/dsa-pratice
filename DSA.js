@@ -3462,7 +3462,7 @@ function isSafe(ary, row, col, dig) {
 // graph.connectEdge(4, 1);
 // topologicalSorting(graph.adjList);
 
-//time(n'vertices'+e'neighbours in adjacency list') space(n), L.C = 207, Course Schedule Problem
+//time(n'vertices'+e'neighbours in adjacency list') space(n), L.C = 207, Course Schedule Problem I
 // function DFS(src, vis, recStack, preRequistes) {
 //   // mark current course as visited
 //   vis[src] = true;
@@ -3530,4 +3530,87 @@ function isSafe(ary, row, col, dig) {
 //     // ❌ This return is wrongly placed (explained below)
 //     return true;
 //   }
+// }
+
+//time(n'vertices'+e'neighbours in adjacency list') space(n), L.C = 210, Course Schedule Problem II
+// function DFS(src, vis, recStack, preRequistes) {
+//   vis[src] = true;
+//   recStack[src] = true;
+
+//   for (let i = 0; i < vis.length; i++) {
+//     const v = preRequistes[i][0];
+//     const u = preRequistes[i][1];
+//     if (u === src) {
+//       if (!vis[v]) {
+//         if (DFS(v, vis, recStack, preRequistes)) {
+//           return true;
+//         }
+//       } else if (recStack[v]) {
+//         return true;
+//       }
+//     }
+//   }
+
+//   recStack[src] = false;
+
+//   return false;
+// }
+// function topologicalSort(src, vis, revTopo, preRequistes) {
+//   vis[src] = true;
+
+//   for (let i = 0; i < vis.length; i++) {
+//     const v = preRequistes[i][0];
+//     const u = preRequistes[i][1];
+//     if (src === u) {
+//       if (!vis[v]) {
+//         topologicalSort(v, vis, revTopo, preRequistes);
+//       }
+//     }
+//   }
+//   revTopo.push(src);
+// }
+// function canFinish() {
+//   const preRequistes = [
+//     [0, 1],
+//     [0, 2],
+//     [0, 3],
+//     [0, 4],
+//     [1, 5],
+//     [1, 6],
+//     [5, 7],
+//     [6, 7],
+//     [2, 8],
+//     [2, 9],
+//     [8, 10],
+//     [9, 10],
+//     [3, 11],
+//     [3, 12],
+//     [11, 13],
+//     [12, 13],
+//     [4, 14],
+//     [4, 15],
+//     [14, 16],
+//     [15, 16],
+//   ];
+//   const numCourses = 17;
+//   let vis = Array(numCourses).fill(false);
+//   const recStack = [];
+//   const ans = [];
+
+//   for (let i = 0; i < numCourses; i++) {
+//     if (!vis[i]) {
+//       if (DFS(i, vis, recStack, preRequistes)) {
+//         return ans;
+//       }
+//     }
+//   }
+
+//   const revTopo = [];
+//   vis = Array(numCourses).fill(false);
+
+//   for (let i = 0; i < numCourses; i++) {
+//     if (!vis[i]) topologicalSort(i, vis, revTopo, preRequistes);
+//   }
+
+//   return revTopo;
 // }
