@@ -3614,3 +3614,61 @@ function isSafe(ary, row, col, dig) {
 
 //   return revTopo;
 // }
+
+
+//time(n*m) space(n*m), L.C = 733, Flood Fill
+// function floodFill(i, j, vis, stack, flood) {
+
+//   // We are using 'stack' as a QUEUE (FIFO behavior).
+//   // Assume this queue is implemented using a Linked List,
+//   // so removal from front (shift) is O(1).
+
+//   // push starting cell into the queue
+//   stack.push([i, j]);
+
+//   // process until queue becomes empty
+//   while (stack.length > 0) {
+
+//     // remove front cell from queue (BFS step)
+//     const [i, j] = stack.shift();
+
+//     // mark current cell as visited
+//     vis[i][j] = true;
+
+//     // change its value from 1 to 2 (flood fill action)
+//     flood[i][j] = 2;
+
+//     // check UP direction
+//     // conditions:
+//     // 1. inside grid
+//     // 2. not visited
+//     // 3. value is 1 (same region)
+//     if (i - 1 >= 0 && !vis[i - 1][j] && flood[i - 1][j] === 1) {
+//       stack.push([i - 1, j]);
+//     }
+
+//     // check DOWN direction
+//     if (i + 1 < flood.length && !vis[i + 1][j] && flood[i + 1][j] === 1) {
+//       stack.push([i + 1, j]);
+//     }
+
+//     // check LEFT direction
+//     if (j - 1 >= 0 && !vis[i][j - 1] && flood[i][j - 1] === 1) {
+//       stack.push([i, j - 1]);
+//     }
+
+//     // check RIGHT direction
+//     if (j + 1 < flood[0].length && !vis[i][j + 1] && flood[i][j + 1] === 1) {
+//       stack.push([i, j + 1]);
+//     }
+//   }
+// }
+// const flood = [
+//   [1, 1, 1],
+//   [1, 1, 0],
+//   [1, 0, 1],
+// ];
+// const vis = Array.from({ length: flood.length }, () =>
+//   Array(flood[0].length).fill(false),
+// );
+// floodFill(1, 1, vis, [], flood);
