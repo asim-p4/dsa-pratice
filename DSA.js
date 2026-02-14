@@ -3672,3 +3672,53 @@ function isSafe(ary, row, col, dig) {
 //   Array(flood[0].length).fill(false),
 // );
 // floodFill(1, 1, vis, [], flood);
+
+
+//time(n'vertices'+e'neighbours in adjacency list') space(n), Kahns's Algorithm Topological Sort
+// function kahnsTopoSorting(n, graph) {
+
+//   // Step 1: Calculate indegree of every vertex
+//   const indegree = Array(n).fill(0);
+
+//   for (let u = 0; u < n; u++) {
+//     for (const v of graph[u]) {
+//       indegree[v]++;
+//     }
+//   }
+
+//   // Step 2: Push all vertices with indegree 0 into queue
+//   const queue = [];
+
+//   for (let i = 0; i < n; i++) {
+//     if (indegree[i] === 0) {
+//       queue.push(i);
+//     }
+//   }
+
+//   // This will store the topological order
+//   const topo = [];
+
+//   // Step 3: Process queue
+//   while (queue.length > 0) {
+
+//     const node = queue.shift(); // remove front element
+//     topo.push(node);            // add it to result
+
+//     // reduce indegree of its neighbors
+//     for (const neighbor of graph[node]) {
+//       indegree[neighbor]--;
+
+//       // if indegree becomes 0, push to queue
+//       if (indegree[neighbor] === 0) {
+//         queue.push(neighbor);
+//       }
+//     }
+//   }
+
+//   // Step 4: If topo length != n → cycle exists
+//   if (topo.length !== n) {
+//     return "Cycle detected";
+//   }
+
+//   return topo;
+// }
