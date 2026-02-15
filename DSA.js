@@ -3722,3 +3722,24 @@ function isSafe(ary, row, col, dig) {
 
 //   return topo;
 // }
+
+
+// function dijkstraAlgorithm(u, n, graph) {
+//   const heap = [];
+//   const path = Array(n).fill(Infinity);
+//   heap.push([u, 0]);
+//   path[u] = 0;
+
+//   while (heap.length > 0) {
+//     const [ver, dist] = heap.shift();
+//     for (const v of graph[ver]) {
+//       const [vertex, distance] = v;
+//       if (dist + distance < path[vertex]) {
+//         path[vertex] = distance + dist;
+//         heap.push([vertex, path[vertex]]);
+//       }
+//     }
+//   }
+
+//   return path;
+// }
