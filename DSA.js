@@ -3724,22 +3724,44 @@ function isSafe(ary, row, col, dig) {
 // }
 
 
-// function dijkstraAlgorithm(u, n, graph) {
-//   const heap = [];
-//   const path = Array(n).fill(Infinity);
-//   heap.push([u, 0]);
-//   path[u] = 0;
+//time(n^2'vertices') space(n), Dijkstra Algorithm
+// function dijkstraAlgorithm(src, n, graph) {
 
-//   while (heap.length > 0) {
-//     const [ver, dist] = heap.shift();
-//     for (const v of graph[ver]) {
-//       const [vertex, distance] = v;
-//       if (dist + distance < path[vertex]) {
-//         path[vertex] = distance + dist;
-//         heap.push([vertex, path[vertex]]);
+//   // distance array (shortest distance from src)
+//   const dist = Array(n).fill(Infinity);
+
+//   // set to store active vertices
+//   // we store vertex numbers
+//   const set = new Set();
+
+//   // distance to source is 0
+//   dist[src] = 0;
+//   set.add(src);
+
+//   while (set.size > 0) {
+
+//     // 🔎 find vertex with minimum distance manually
+//     let u = null;
+//     for (const v of set) {
+//       if (u === null || dist[v] < dist[u]) {
+//         u = v;
+//       }
+//     }
+
+//     // remove selected vertex from set
+//     set.delete(u);
+
+//     // relax all neighbors
+//     for (const [vertex, weight] of graph[u]) {
+
+//       if (dist[u] + weight < dist[vertex]) {
+//         dist[vertex] = dist[u] + weight;
+
+//         // add updated vertex into set
+//         set.add(vertex);
 //       }
 //     }
 //   }
 
-//   return path;
+//   return dist;
 // }
