@@ -3797,3 +3797,67 @@ function isSafe(ary, row, col, dig) {
 //   graph.adjList,
 // );
 
+/*
+DIJKSTRA ALGORITHM
+
+✔ Greedy algorithm that always selects the vertex with the minimum tentative distance.
+✔ Works only when all edge weights are non-negative.
+✔ Once a vertex is finalized, its shortest path never changes.
+✔ Faster than Bellman-Ford (O((V+E) log V) with heap).
+✔ Efficient for large sparse graphs.
+
+✘ Fails if graph contains negative edge weights.
+✘ Cannot detect negative weight cycles.
+✘ Needs a priority queue for optimal performance.
+*/
+
+
+//time(n^2'vertices') space(n), Bellman Ford Algorithm
+// function bellmanFord(src, n, graph) {
+//   // Create distance array of size n
+//   // Initially all vertices are unreachable → Infinity
+//   const dist = Array(n).fill(Infinity);
+
+//   // Distance from source to itself is 0
+//   dist[src] = 0;
+
+//   // Bellman-Ford relaxes all edges (n - 1) times
+//   // Why (n - 1)?
+//   // Because the longest possible simple path in a graph
+//   // can have at most (n - 1) edges.
+//   for (let i = 0; i < n - 1; i++) {
+
+//     // Traverse every vertex
+//     for (let u = 0; u < n; u++) {
+
+//       // Traverse all outgoing edges of vertex u
+//       // graph[u] contains pairs: [v, weight]
+//       for (const [v, weight] of graph[u]) {
+
+//         // Relaxation step:
+//         // If going from src → ... → u → v
+//         // gives shorter distance, update dist[v]
+//         if (dist[u] + weight < dist[v]) {
+//           dist[v] = dist[u] + weight;
+//         }
+
+//       }
+//     }
+//   }
+
+//   // After (n - 1) relaxations,
+//   // dist[] contains shortest path distances
+//   return dist;
+// }
+/*
+BELLMAN-FORD ALGORITHM
+
+✔ Relaxes all edges (V-1) times to guarantee shortest paths.
+✔ Works with negative edge weights.
+✔ Can detect negative weight cycles.
+✔ Simple implementation (no heap required).
+
+✘ Slower than Dijkstra (O(V * E)).
+✘ Inefficient for large dense graphs.
+✘ Repeatedly checks all edges even if no update is needed.
+*/
