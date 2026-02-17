@@ -3725,6 +3725,23 @@ function isSafe(ary, row, col, dig) {
 
 
 //time(n^2'vertices') space(n), Dijkstra Algorithm
+// class Graph {
+//   constructor() {
+//     this.adjList = {};
+//   }
+
+//   addVertex(vertex) {
+//     if (!this.adjList[vertex]) this.adjList[vertex] = [];
+//   }
+
+//   connectEdge(v1, v2, w) {
+//     if (!this.adjList[v1]) this.addVertex(v1);
+//     if (!this.adjList[v2]) this.addVertex(v2);
+
+//     this.adjList[v1].push([v2, w]);
+//     this.adjList[v2].push([v1, w]);
+//   }
+// }
 // function dijkstraAlgorithm(src, n, graph) {
 
 //   // distance array (shortest distance from src)
@@ -3765,3 +3782,18 @@ function isSafe(ary, row, col, dig) {
 
 //   return dist;
 // }
+// const graph = new Graph();
+// graph.connectEdge(0, 1, 4); //(from,to,weight)
+// graph.connectEdge(0, 2, 4);
+// graph.connectEdge(1, 2, 2);
+// graph.connectEdge(2, 3, 3);
+// graph.connectEdge(2, 4, 1);
+// graph.connectEdge(2, 5, 6);
+// graph.connectEdge(3, 5, 2);
+// graph.connectEdge(4, 5, 3);
+// const res = dijkstraAlgorithm(
+//   0,
+//   Object.keys(graph.adjList).length,
+//   graph.adjList,
+// );
+
