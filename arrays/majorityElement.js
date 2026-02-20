@@ -46,6 +46,13 @@ function majorityElement(nums) {
   }
 }
 
+//time O(nlogn), space O(1)
+function majorityElement(nums) {
+  nums.sort((a, b) => a - b);
+  // Majority element must occupy middle index of sorted array
+  return nums[Math.floor(nums.length / 2)];
+}
+
 const nums = [6, 5, 5];
 console.log(majorityElement(nums));
 
