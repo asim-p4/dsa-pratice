@@ -33,6 +33,19 @@ function majorityElement(nums) {
   return candidate;
 }
 
+//time O(n), space O(n)
+function majorityElement(nums) {
+  const map = new Map();
+
+  for (const num of nums) {
+    map.set(num, (map.get(num) || 0) + 1);
+
+    if (map.get(num) > nums.length / 2) {
+      return num;
+    }
+  }
+}
+
 const nums = [6, 5, 5];
 console.log(majorityElement(nums));
 
