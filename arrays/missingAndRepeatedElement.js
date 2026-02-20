@@ -34,6 +34,44 @@ function missingAndRepeated(n, grid) {
     }
   }
 }
+
+//time O(n^2), space O(1)
+function missingAndRepeated(n, grid) {
+  const N = n * n;
+
+  let sum = 0;
+  let squareSum = 0;
+
+  for (let row of grid) {
+    for (let num of row) {
+      sum += num;
+      squareSum += num * num;
+    }
+  }
+
+  const expectedSum = (N * (N + 1)) / 2;
+  const expectedSquareSum = (N * (N + 1) * (2 * N + 1)) / 6;
+
+
+  // x appears twice
+  // y is missing
+  // so our Sum should have extra x (+x) and y (-y) missing
+  // Sum=expectedSum−y+x
+  // Sum=expectedSum+(x−y)
+  // Sum−expectedSum=x−y
+  const diff = sum - expectedSum; // x - y
+  //same here
+  //squareSum−expectedSquareSum=x2−y2
+  const squareDiff = squareSum - expectedSquareSum; // x² - y²
+
+  //simply solve two eq. to find x and y 
+  const sumXY = squareDiff / diff; // x + y
+
+  const repeated = (diff + sumXY) / 2;
+  const missing = sumXY - repeated;
+
+  return [repeated, missing];
+}
 const grid = [
   [9, 1, 7],
   [8, 9, 2],
