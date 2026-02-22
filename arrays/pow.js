@@ -51,4 +51,34 @@ function pow(x, n) {
   return result;
 }
 
+//time O(n), space O(1)
+function pow(x, n) {
+  // If exponent is 0 → anything^0 = 1
+  if (n === 0) return 1;
+
+  // If exponent is negative:
+  // x^-n = 1 / (x^n)
+  let isNegative = false;
+
+  if (n < 0) {
+    isNegative = true;
+    n = -n; // make exponent positive
+  }
+
+  let result = 1;
+
+  // Multiply x, n times
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+
+  // If original exponent was negative,
+  // return reciprocal
+  if (isNegative) {
+    return 1 / result;
+  }
+
+  return result;
+}
+
 pow(2, 10);
