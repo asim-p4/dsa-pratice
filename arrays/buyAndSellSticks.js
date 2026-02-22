@@ -4,7 +4,7 @@
 // Frequently Asked In:Microsoft, Amazon, Google, Goldman Sachs, Walmart, Salesforce, Oracle, Intuit, Flipkart
 
 //time O(n), space O(1)
-function buyAndSellStocks(prices) {
+function maxProfit(prices) {
   // we use two pointers to find max profit
   let left = 0;
   let right = 1;
@@ -31,6 +31,19 @@ function buyAndSellStocks(prices) {
   }
 }
 
-const prices = [2, 3, 1, 4];
+//time O(n^2), space O(1)
+function maxProfit(prices) {
+  let profit = 0;
+  for (let i = 0; i < prices.length - 1; i++) {
+    for (let j = i + 1; j < prices.length; j++) {
+      if (prices[i] < prices[j]) {
+        profit = Math.max(profit, prices[j] - prices[i]);
+      }
+    }
+  }
 
+  return profit;
+}
+
+const prices = [2, 3, 1, 4];
 buyAndSellStocks(prices);
