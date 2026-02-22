@@ -15,6 +15,7 @@ function singleDight(nums) {
 }
 
 //time O(n^2), space O(1)
+//gives TLE
 function singleDight(nums) {
   for (let j = 0; j < nums.length ; j++) {
     let status = false;
