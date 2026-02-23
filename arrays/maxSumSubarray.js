@@ -17,6 +17,24 @@ function maxSumSubarray(nums) {
   return max;
 }
 
+//time O(n), space O(1), TLE
+function maxSumSubarray(nums) {
+  // Initialize both as first element
+  let currentSum = nums[0];
+  let maxSum = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    // Either extend previous subarray
+    // OR start fresh from current number
+    currentSum = Math.max(nums[i], currentSum + nums[i]);
+
+    // Update global maximum
+    maxSum = Math.max(maxSum, currentSum);
+  }
+
+  return maxSum;
+}
+
 const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
 maxSumSubarray(nums);
