@@ -9,7 +9,6 @@
 // The task is to find the repeating and missing numbers a and b.
 // Return a 0-indexed integer array ans of size 2 where ans[0] equals to a and ans[1] equals to b.
 
-
 //time O(n^2), space O(n^2)
 function missingAndRepeated(n, grid) {
   const digits = new Set();
@@ -48,10 +47,8 @@ function missingAndRepeated(n, grid) {
       squareSum += num * num;
     }
   }
-
   const expectedSum = (N * (N + 1)) / 2;
   const expectedSquareSum = (N * (N + 1) * (2 * N + 1)) / 6;
-
 
   // x appears twice
   // y is missing
@@ -64,7 +61,7 @@ function missingAndRepeated(n, grid) {
   //squareSum−expectedSquareSum=x2−y2
   const squareDiff = squareSum - expectedSquareSum; // x² - y²
 
-  //simply solve two eq. to find x and y 
+  //simply solve two eq. to find x and y
   const sumXY = squareDiff / diff; // x + y
 
   const repeated = (diff + sumXY) / 2;
