@@ -34,5 +34,42 @@ function maxWater(height) {
   return max;
 }
 
+//time O(n), space O(1), TLE
+function maxWater(height) {
+  let max = 0;
+
+  // Two pointers:
+  // start at leftmost line
+  let start = 0;
+
+  // end at rightmost line
+  let end = height.length - 1;
+
+  // Continue until pointers meet
+  while (start < end) {
+    // Water height is limited by shorter line
+    const minHeight = Math.min(height[start], height[end]);
+
+    // Width between lines
+    const width = end - start;
+
+    // Calculate area
+    const area = minHeight * width;
+
+    // Update maximum area
+    max = Math.max(max, area);
+
+    // Move pointer of smaller height
+    // Because moving taller one cannot increase area
+    if (height[start] < height[end]) {
+      start++;
+    } else {
+      end--;
+    }
+  }
+
+  return max;
+}
+
 const height = [1, 8, 6, 2, 5, 4, 8, 3, 7];
 console.log(maxWater(height));
