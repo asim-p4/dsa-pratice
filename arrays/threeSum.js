@@ -7,6 +7,7 @@
 // such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 // Notice that the solution set must not contain duplicate triplets.
 
+// time(n^3), space(1), TLE
 function threeSum(nums) {
   const ans = [];
 
