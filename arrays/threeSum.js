@@ -14,13 +14,14 @@ function threeSum(nums) {
     for (let j = i + 1; j < nums.length - 1; j++) {
       for (let k = j + 1; k < nums.length; k++) {
         if (nums[i] + nums[j] + nums[k] === 0) {
-          ans.push([nums[i], nums[j], nums[k]].sort().stringify());
+          ans.includes([nums[i], nums[j], nums[k]].sort().toString()) ||
+            ans.push([nums[i], nums[j], nums[k]].sort().toString());
         }
       }
     }
   }
 
-  return ans;
+  return ans.map((str) => str.split(",").map(Number));
 }
 const nums = [-1, 0, 1, 2, -1, -4];
 console.log(threeSum(nums));
