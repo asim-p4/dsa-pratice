@@ -20,7 +20,7 @@ function search2DArray(mat, tar) {
   return false;
 }
 
-// time O(log m + log n), space O(1) TLE
+// time O(log m + log n), space O(1)
 function search2DArray(matrix, target) {
   // m = number of rows
   const m = matrix.length;
