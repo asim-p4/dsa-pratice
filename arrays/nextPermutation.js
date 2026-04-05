@@ -19,6 +19,7 @@
 // 5) Reverse everything after index i
 // This makes the suffix smallest possible
 
+// time O(n), spsce O(1),  
 function nextPermutation(nums) {
   let i = nums.length - 2;
 
