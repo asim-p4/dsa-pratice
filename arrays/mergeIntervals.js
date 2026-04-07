@@ -56,6 +56,25 @@ function mergeIntervals(intervals) {
   }
 }
 
+// Time O(nlogn), Space O(1)
+// could be Time O(n^2) due to (due to splice shifting)
+function mergeIntervals(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+
+  for (let i = 0; i < intervals.length - 1; i++) {
+    if (intervals[i][1] >= intervals[i + 1][0]) {
+      if (intervals[i][1] < intervals[i + 1][1]) {
+        intervals[i].pop();
+        intervals[i].push(intervals[i + 1][1]);
+      }
+      intervals.splice(i + 1, 1);
+      i--;
+    }
+  }
+
+  return intervals;
+}
+
 const intervals = [
   [1, 4],
   [2, 3],
