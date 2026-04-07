@@ -75,6 +75,34 @@ function mergeIntervals(intervals) {
   return intervals;
 }
 
+// Time O(nlogn), Space O(n)
+function mergeIntervals(intervals) {
+  // Step 1: sort by start time
+  intervals.sort((a, b) => a[0] - b[0]);
+
+  const merged = [];
+
+  for (let i = 0; i < intervals.length; i++) {
+    // If merged is empty, just add first interval
+    if (merged.length === 0) {
+      merged.push(intervals[i]);
+    } else {
+      let last = merged[merged.length - 1];
+
+      // Check overlap
+      if (last[1] >= intervals[i][0]) {
+        // Merge: update end to max
+        last[1] = Math.max(last[1], intervals[i][1]);
+      } else {
+        // No overlap → add new interval
+        merged.push(intervals[i]);
+      }
+    }
+  }
+
+  return merged;
+}
+
 const intervals = [
   [1, 4],
   [2, 3],
