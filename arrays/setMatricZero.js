@@ -26,9 +26,7 @@ function alterPlace(i, j, m, n, matrix) {
     row++;
   }
 }
-
-//time O(n), space O(m * n)
-// Main function
+//time O(m × n × (m + n)), space O(m * n)
 function setMatricZero(matrix) {
   // Number of rows
   const m = matrix.length;
@@ -60,6 +58,37 @@ function setMatricZero(matrix) {
         // Set entire row i and column j to 0
         alterPlace(i, j, m, n, matrix);
       }
+    }
+  }
+}
+
+// time O(m × n × (m + n)), space O(m * n), same as before
+// Readability => Slightly better compared to above
+// Memory usage	=> Slightly lower better compared to above
+function setMatricZero(matrix) {
+  const m = matrix.length;
+  const n = matrix[0].length;
+
+  const ary = [];
+
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (!matrix[i][j]) {
+        ary.push([i, j]);
+      }
+    }
+  }
+
+  for (let [i, j] of ary) {
+    let row = 0;
+    let col = 0;
+    while (col < n) {
+      matrix[i][col] = 0;
+      col++;
+    }
+    while (row < m) {
+      matrix[row][j] = 0;
+      row++;
     }
   }
 }
