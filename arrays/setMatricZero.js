@@ -12,14 +12,14 @@ function alterPlace(i, j, m, n, matrix) {
   let row = 0;
   let col = 0;
 
-  // 🔹 Set all elements in row 'i' to 0
+  // Set all elements in row 'i' to 0
   // We iterate through all columns in row i
   while (col < n) {
     matrix[i][col] = 0;
     col++;
   }
 
-  // 🔹 Set all elements in column 'j' to 0
+  // Set all elements in column 'j' to 0
   // We iterate through all rows in column j
   while (row < m) {
     matrix[row][j] = 0;
@@ -34,12 +34,12 @@ function setMatricZero(matrix) {
   // Number of columns
   const n = matrix[0].length;
 
-  // 🔹 Create a helper matrix (same size as original)
+  // Create a helper matrix (same size as original)
   // This will store which cells were originally 0
   // We use this to avoid modifying the matrix while scanning it
   const ary = Array.from({ length: m }, () => Array(n).fill(false));
 
-  // 🔹 First pass: find all zeros
+  // First pass: find all zeros
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {
       // If current element is 0
@@ -50,7 +50,7 @@ function setMatricZero(matrix) {
     }
   }
 
-  // 🔹 Second pass: update matrix
+  // Second pass: update matrix
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {
       // If this cell was originally 0
@@ -120,11 +120,7 @@ function setMatricZero(matrix) {
     }
   }
 
-  // Debug: shows which rows/columns will be zeroed
-  console.log("row", row);
-  console.log("col", col);
-
-  // 🔹 Second step: zero out all marked rows
+  // Second step: zero out all marked rows
   row.forEach((el) => {
     let j = 0;
 
@@ -135,7 +131,7 @@ function setMatricZero(matrix) {
     }
   });
 
-  // 🔹 Third step: zero out all marked columns
+  // Third step: zero out all marked columns
   col.forEach((el) => {
     let i = 0;
 
