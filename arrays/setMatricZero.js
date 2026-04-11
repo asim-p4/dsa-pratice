@@ -93,6 +93,61 @@ function setMatricZero(matrix) {
   }
 }
 
+//time O(m × n), space O(m + n)
+function setMatricZero(matrix) {
+  // Number of rows
+  const m = matrix.length;
+
+  // Number of columns
+  const n = matrix[0].length;
+
+  // 🔹 Set to store row indices that must be zeroed
+  let row = new Set();
+
+  // 🔹 Set to store column indices that must be zeroed
+  let col = new Set();
+
+  // 🔹 First pass: find all zero positions
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      // If current element is 0
+      if (!matrix[i][j]) {
+        // Store row index
+        row.add(i);
+
+        // Store column index
+        col.add(j);
+      }
+    }
+  }
+
+  // Debug: shows which rows/columns will be zeroed
+  console.log("row", row);
+  console.log("col", col);
+
+  // 🔹 Second step: zero out all marked rows
+  row.forEach((el) => {
+    let j = 0;
+
+    // Traverse entire row
+    while (j < n) {
+      matrix[el][j] = 0;
+      j++;
+    }
+  });
+
+  // 🔹 Third step: zero out all marked columns
+  col.forEach((el) => {
+    let i = 0;
+
+    // Traverse entire column
+    while (i < m) {
+      matrix[i][el] = 0;
+      i++;
+    }
+  });
+}
+
 // Example input matrix
 const matrix = [
   [0, 1, 2, 0],
