@@ -101,20 +101,19 @@ function setMatricZero(matrix) {
   // Number of columns
   const n = matrix[0].length;
 
-  // 🔹 Set to store row indices that must be zeroed
+  // Set to store row indices that must be zeroed
   let row = new Set();
 
-  // 🔹 Set to store column indices that must be zeroed
+  // Set to store column indices that must be zeroed
   let col = new Set();
 
-  // 🔹 First pass: find all zero positions
+  // First pass: find all zero positions
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {
       // If current element is 0
       if (!matrix[i][j]) {
         // Store row index
         row.add(i);
-
         // Store column index
         col.add(j);
       }
