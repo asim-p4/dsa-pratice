@@ -143,6 +143,68 @@ function setMatricZero(matrix) {
   });
 }
 
+//time O(m × n), space O(1)
+function setMatricZero(matrix) {
+  const m = matrix.length;
+  const n = matrix[0].length;
+
+  // we are first tracking which rol and col to turn 0 using Ist col and row as tracker
+  // bcuz manipulating array while iterating on it will turn more row and col into zero
+  // which are not meant to be
+
+  let firstRowZero = false;
+  let firstColZero = false;
+
+ // Step 1: Check if first row or first column has any 0
+  for (let i = 0; i < m; i++) {
+    if (matrix[i][0] === 0) {
+      firstColZero = true;
+    }
+  }
+  for (let j = 0; j < n; j++) {
+    if (matrix[0][j] === 0) {
+      firstRowZero = true;
+    }
+  }
+
+  // Step 2: Use first row & column as markers 
+  // by setting el val to 0 in Ist row and col
+  // adjacent to 0 in same col or row 
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      if (matrix[i][j] === 0) {
+        matrix[i][0] = 0;
+        matrix[0][j] = 0;
+      }
+    }
+  }
+
+  // Step 3: Zero out cells based on markers
+  // since bcuz of 0 in Ist col and row now know
+  // which row and col to turn zero compeletely
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      if (matrix[i][0] === 0 || matrix[0][j] === 0) {
+        matrix[i][j] = 0;
+      }
+    }
+  }
+
+  // Step 4: Zero first row and col if needed
+  // at the end Ist row and col will compeletely turn into 0
+  //  if it had its own 0 in Step 1 
+  if (firstRowZero) {
+    for (let j = 0; j < n; j++) {
+      matrix[0][j] = 0;
+    }
+  }
+  if (firstColZero) {
+    for (let i = 0; i < m; i++) {
+      matrix[i][0] = 0;
+    }
+  }
+}
+
 // Example input matrix
 const matrix = [
   [0, 1, 2, 0],
